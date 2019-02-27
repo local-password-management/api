@@ -10,7 +10,9 @@ class ProjectTest extends TestCase
 {   
     use WithFaker;
 
-    # index
+    /**
+     * index
+     */
     public function test_get_all_projects()
     {   
         $this->login();
