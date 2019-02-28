@@ -41,10 +41,8 @@ class FieldController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->only($this->fields);
-        if($field = $this->model->create($data)) {
-            return $this->respond->new($this->resource, $field);
-        }
-        return $this->error();
+        $field = $this->model->create($data);
+        return $this->respond->newOrError($this->resource, $field);
     }
 
     /**

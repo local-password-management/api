@@ -31,6 +31,11 @@ class Respond extends \Illuminate\Routing\ResponseFactory
     {
         return $this->condition($condition, $code, $data);
     }
+
+    public function newOrError($resource, $model)
+    {
+        return $model ? $this->new($resource, $model) : $this->error();
+    }
     
     public function condition($condition, $code = null, array $data = [])
     {   

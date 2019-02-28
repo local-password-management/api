@@ -35,10 +35,8 @@ class ProjectController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->only('name', 'domain', 'host', 'status');
-        if($project = $this->model->create($data)) {
-            return $this->respond->new($this->resource, $project);
-        }
-        return $this->error();
+        $project = $this->model->create($data);
+        return $this->respond->newOrError($this->resource, $project);
     }
 
     /**
